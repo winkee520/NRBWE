@@ -69,144 +69,96 @@
       <div class="row" id="result">
         <div class="col-md-12">
         	<h4>Abstract</h4>  
-          Neural audio codec technology has recently attracted sig-
-nificant attention in various speech processing tasks due to its
-efficient quantized latent features. In this work, we introduce
-a novel approach that leverages a pre-trained neural codec net-
-work to perform both speech denoising and bandwidth expan-
-sion simultaneously. Specifically, we design a conformer-based
-deep neural network to predict clean codebook indices, which
-are then used by the pre-trained audio codec model to gener-
-ate enhanced and bandwidth expanded audio. We investigate
-several strategies for generating the clean indices and compare
-our approach with state-of-the-art methods on the Valentini-
-Botinhao noisy test set. Experimental results demonstrate that
-our method achieves performance comparable to leading ap-
-proaches in noise-robust bandwidth expansion tasks while of-
-fering promising improvements in the quality and intelligibility
-of narrow-band signals.<br>
+          Neural audio codec technology has recently attracted significant attention in various speech processing tasks due to its efficient quantized latent features. In this work, we introduce a novel approach that leverages a pre-trained neural codec network to perform both speech denoising and bandwidth expansion simultaneously. Specifically, we design a conformer-based deep neural network to predict clean codebook indices, which are then used by the pre-trained audio codec model to generate enhanced and bandwidth expanded audio. We investigate several strategies for generating the clean indices and compare our approach with state-of-the-art methods on the Valentini-Botinhao noisy test set. Experimental results demonstrate that our method achieves performance comparable to leading approaches in noise-robust bandwidth expansion tasks while offering promising improvements in the quality and intelligibility of narrow-band signals.<br>
 <br>
 <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
   <div style="text-align: center;margin-left: 40px;">
-    <img src="systemoverflow.drawio.png" width="640" height="260">
-    <p> <br><br>Fig. 1: The schematic workflow: <br>Input noisy speech waveform is separated into cepstrum domain magnitude and spectrum domain phase, and these two features will be processed by different Conformer U-Net</p>
-  </div>
-  <div style="text-align: center; margin-left: 60px;">
-    <img src="separate.drawio.png" width="450" height="280">
-    <p> <br>Fig. 2: Using different analysis window for magnitude and phase extraction</p>
+    <img src="overview.drawio.png" width="860" height="260">
+    <p> <br><br>System overview of the proposed system. The system contains 2 parts: Descript Audio Codec (DAC) and clean token
+      predictor. DAC is consisted of DAC Encoder, Residual Vector quantization (RVQ) and DAC Decoder, and clean token predictor has
+      multiple Conformer layers and Multi-head linear layers.</p>
   </div>
 </div>
 <br><br>
 
       <h4>Test Datasets</h4>
-      <b>DNS-Challenge non-blind dataset [1]</b>: A synthetic data set. <br>
-      <b>APOLLO Fearless Steps dataset [2]</b>: A naturalistic noisy data set with 8kHz sampling rate from Fearless Steps Challenge: Phase II. <br>
+      <b>Valentini-Botinhao [1]</b>: A synthetic data set. <br>
 
       <br><br>
     <h4> Audio Samples </h4>
     <hr class="hr_line">
-    <h5>DNS-Challenge non-blind dataset</h5>
+    <h5>Valentini-Botinhao dataset</h5>
     <table class="table ">
       <thead>
           <tr>
               <th>Samples</th>
               <th>Noisy</th>
-              <th>Clean</th>
-              <th>DTLN [3]</th>
-              <th>Spec match</th>
               <th>proposed</th>
+              <th>Clean</th>
           </tr>
       </thead>
       <tbody>
         <tr> <td> Sample 1 </td>
-          <td><audio controls=""><source src="NOISY/1.wav"></audio></td>
-          <td><audio controls=""><source src="CLEAN/1.wav"></audio></td>
-          <td><audio controls=""><source src="DTLN/1.wav"></audio></td>
-          <td><audio controls=""><source src="Ceps/1.wav"></audio></td>
-          <td><audio controls=""><source src="FUSION/1.wav"></audio></td>
+          <td><audio controls=""><source src="Noisy/p257_126.wav"></audio></td>
+          <td><audio controls=""><source src="Proposed/p257_126.wav"></audio></td>
+          <td><audio controls=""><source src="Clean/p257_126.wav"></audio></td>
         </tr>
         <tr> <td> Sample 2 </td>
-          <td><audio controls=""><source src="NOISY/2.wav"></audio></td>
-          <td><audio controls=""><source src="CLEAN/2.wav"></audio></td>
-          <td><audio controls=""><source src="DTLN/2.wav"></audio></td>
-          <td><audio controls=""><source src="Ceps/2.wav"></audio></td>
-          <td><audio controls=""><source src="FUSION/2.wav"></audio></td>
+          <td><audio controls=""><source src="Noisy/p232_110.wav"></audio></td>
+          <td><audio controls=""><source src="Proposed/p232_110.wav"></audio></td>
+          <td><audio controls=""><source src="Clean/p232_110.wav"></audio></td>
         </tr>
         <tr> <td> Sample 3 </td>
-          <td><audio controls=""><source src="NOISY/3.wav"></audio></td>
-          <td><audio controls=""><source src="CLEAN/3.wav"></audio></td>
-          <td><audio controls=""><source src="DTLN/3.wav"></audio></td>
-          <td><audio controls=""><source src="Ceps/3.wav"></audio></td>
-          <td><audio controls=""><source src="FUSION/3.wav"></audio></td>
+          <td><audio controls=""><source src="Noisy/p232_137.wav"></audio></td>
+          <td><audio controls=""><source src="Proposed/p232_137.wav"></audio></td>
+          <td><audio controls=""><source src="Clean/p232_137.wav"></audio></td>
         </tr>
         <tr> <td> Sample 4 </td>
-          <td><audio controls=""><source src="NOISY/4.wav"></audio></td>
-          <td><audio controls=""><source src="CLEAN/4.wav"></audio></td>
-          <td><audio controls=""><source src="DTLN/4.wav"></audio></td>
-          <td><audio controls=""><source src="Ceps/4.wav"></audio></td>
-          <td><audio controls=""><source src="FUSION/4.wav"></audio></td>
+          <td><audio controls=""><source src="Noisy/p232_362.wav"></audio></td>
+          <td><audio controls=""><source src="Proposed/p232_362.wav"></audio></td>
+          <td><audio controls=""><source src="Clean/p232_362.wav"></audio></td>
         </tr>
         <tr> <td> Sample 5 </td>
-          <td><audio controls=""><source src="NOISY/5.wav"></audio></td>
-          <td><audio controls=""><source src="CLEAN/5.wav"></audio></td>
-          <td><audio controls=""><source src="DTLN/5.wav"></audio></td>
-          <td><audio controls=""><source src="Ceps/5.wav"></audio></td>
-          <td><audio controls=""><source src="FUSION/5.wav"></audio></td>
+          <td><audio controls=""><source src="Noisy/p257_431.wav"></audio></td>
+          <td><audio controls=""><source src="Proposed/p257_431.wav"></audio></td>
+          <td><audio controls=""><source src="Clean/p257_431.wav"></audio></td>
         </tr>
         </tr>
     </tbody>
 </table>
 <hr class="hr_line">
-<h5>APOLLO Fearless Steps dataset</h5>
+<h5>Real recordings</h5>
 <table class="table ">
   <thead>
       <tr>
           <th>Samples</th>
           <th>Noisy</th>
-          <th>DTLN [3]</th>
-          <th>Spec match</th>
-          <th>Proposed</th>
+          <th>proposed</th>
       </tr>
   </thead>
   <tbody>
     <tr> <td> Sample 1 </td>
-      <td><audio controls=""><source src="NOISY/FS02_ASR_track2_eval_01527.wav"></audio></td>
-      <td><audio controls=""><source src="DTLN/FS02_ASR_track2_eval_01527.wav"></audio></td>
-      <td><audio controls=""><source src="Ceps/FS02_ASR_track2_eval_01527.wav"></audio></td>
-      <td><audio controls=""><source src="FUSION/FS02_ASR_track2_eval_01527.wav"></audio></td>
+      <td><audio controls=""><source src="Noisy/clinton-cut_0-0_0-11.wav"></audio></td>
+      <td><audio controls=""><source src="Proposed/clinton-cut_0-0_0-11.wav"></audio></td>
     </tr>
     <tr> <td> Sample 2 </td>
-      <td><audio controls=""><source src="NOISY/FS02_ASR_track2_eval_00044.wav"></audio></td>
-      <td><audio controls=""><source src="DTLN/FS02_ASR_track2_eval_00044.wav"></audio></td>
-      <td><audio controls=""><source src="Ceps/FS02_ASR_track2_eval_00044.wav"></audio></td>
-      <td><audio controls=""><source src="FUSION/FS02_ASR_track2_eval_00044.wav"></audio></td>
+      <td><audio controls=""><source src="Noisy/truman-cut_0-21_0-35.wav"></audio></td>
+      <td><audio controls=""><source src="Proposed/truman-cut_0-21_0-35.wav"></audio></td>
     </tr>
     <tr> <td> Sample 3 </td>
-      <td><audio controls=""><source src="NOISY/FS02_ASR_track2_eval_00047.wav"></audio></td>
-      <td><audio controls=""><source src="DTLN/FS02_ASR_track2_eval_00047.wav"></audio></td>
-      <td><audio controls=""><source src="Ceps/FS02_ASR_track2_eval_00047.wav"></audio></td>
-      <td><audio controls=""><source src="FUSION/FS02_ASR_track2_eval_00047.wav"></audio></td>
+      <td><audio controls=""><source src="Noisy/a11_01.wav"></audio></td>
+      <td><audio controls=""><source src="Proposed/a11_01.wav"></audio></td>
     </tr>
     <tr> <td> Sample 4 </td>
-      <td><audio controls=""><source src="NOISY/FS02_ASR_track2_eval_00258.wav"></audio></td>
-      <td><audio controls=""><source src="DTLN/FS02_ASR_track2_eval_00258.wav"></audio></td>
-      <td><audio controls=""><source src="Ceps/FS02_ASR_track2_eval_00258.wav"></audio></td>
-      <td><audio controls=""><source src="FUSION/FS02_ASR_track2_eval_00258.wav"></audio></td>
-    </tr>
-    <tr> <td> Sample 5 </td>
-      <td><audio controls=""><source src="NOISY/FS02_ASR_track2_eval_02381.wav"></audio></td>
-      <td><audio controls=""><source src="DTLN/FS02_ASR_track2_eval_02381.wav"></audio></td>
-      <td><audio controls=""><source src="Ceps/FS02_ASR_track2_eval_02381.wav"></audio></td>
-      <td><audio controls=""><source src="FUSION/FS02_ASR_track2_eval_02381.wav"></audio></td>
+      <td><audio controls=""><source src="Noisy/a11_02.wav"></audio></td>
+      <td><audio controls=""><source src="Proposed/a11_02.wav"></audio></td>
     </tr>
     </tr>
 </tbody>
 </table>
 <hr class="hr_line">
 <h4> References </h4>
-[1] Reddy, Chandan K. A. et al. “The INTERSPEECH 2020 Deep Noise Suppression Challenge: Datasets, Subjective Testing Framework, and Challenge Results.” Interspeech (2020). <br>
-[2] J. H. L. Hansen, A. Sangwan, A. Joglekar, A. E. Bulut, L. Kaushik, and C. Yu, “Fearless steps: Apollo-11 corpus advancements for speech technologies from earth to the moon,” in Interspeech, 2018<br>
-[3] N. L. Westhausen and B. T. Meyer, “Dual-Signal Transformation LSTM Network for Real-Time Noise Suppression,” in Proc.Interspeech 2020
+[1] C. Valentini-Botinhao et al., “Noisy speech database for training speech enhancement algorithms and tts models,” University of Ed- inburgh. School of Informatics. Centre for Speech Technology Re- search (CSTR), 2017. <br>
 <br>
         
         
